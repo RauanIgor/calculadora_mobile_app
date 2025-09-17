@@ -21,6 +21,12 @@ class TipActivity : AppCompatActivity() {
     private var tipPercent: Int = 10
     private var qtdPeople: Int = 2
 
+    companion object {
+        private const val KEY_SUBTOTAL = "key_subtotal"
+        private const val KEY_TIP_PERCENT = "key_tip_percent"
+        private const val KEY_QTD_PEOPLE = "key_qtd_people"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tip)
@@ -32,7 +38,13 @@ class TipActivity : AppCompatActivity() {
         textTipPercent = findViewById(R.id.text_tip_percent)
         textQtdPeople = findViewById(R.id.text_qtd_people)
 
+        if (savedInstanceState != null) {
+            subtotal = savedInstanceState.getString(KEY_SUBTOTAL, "")
+            tipPercent = savedInstanceState.getInt(KEY_TIP_PERCENT, 10)
+            qtdPeople = savedInstanceState.getInt(KEY_QTD_PEOPLE, 2)
+        }
 
+        updateSubtotal()
         updateTipPercent()
         updatePeople()
         updateCalculations()
@@ -128,6 +140,13 @@ class TipActivity : AppCompatActivity() {
         valueTip.text = formatCurrency(tip)
         valueTotal.text = formatCurrency(total)
         valuePeople.text = formatCurrency(perPerson)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_SUBTOTAL, subtotal)
+        outState.putInt(KEY_TIP_PERCENT, tipPercent)
+        outState.putInt(KEY_QTD_PEOPLE, qtdPeople)
     }
 
     private fun formatCurrency(value: String): String {
