@@ -1,7 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Calculadora_app" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Theme.CalculadoraApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorSurface">@color/dark_background</item>
+        <item name="colorOnSurface">@color/dark_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/dark_text_secondary</item>
+
+        <item name="colorPrimaryContainer">@color/dark_button_operator_bg</item>
+        <item name="colorOnPrimaryContainer">@color/dark_button_operator_text</item>
+        <item name="colorSecondaryContainer">@color/dark_button_number_bg</item>
+        <item name="colorOnSecondaryContainer">@color/dark_text_primary</item>
+        <item name="colorTertiaryContainer">@color/dark_button_special_bg</item>
+        <item name="colorOnTertiaryContainer">@color/dark_text_primary</item>
     </style>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.calculadora_app
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
     private lateinit var tvDisplay: TextView
@@ -20,8 +22,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Inicializa o botão de gorjeta
+        val btnTip = findViewById<MaterialButton>(R.id.btn_tip)
+        btnTip.setOnClickListener {
+            val intent = Intent(this, TipActivity::class.java)
+            startActivity(intent)
+        }
+
         // TextView de display
-        tvDisplay = findViewById(R.id.txtResultado)
+        tvDisplay = findViewById(R.id.text_result)
 
         // Botões de dígitos
         val digits = listOf(
@@ -35,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             "7" to R.id.btn7,
             "8" to R.id.btn8,
             "9" to R.id.btn9,
-            "." to R.id.btnPonto
+            "." to R.id.btnDot
         )
         digits.forEach { (digit, id) ->
             findViewById<Button>(id).setOnClickListener { appendDigit(digit) }
@@ -43,17 +52,17 @@ class MainActivity : AppCompatActivity() {
 
         // Botões de operações
         val ops = listOf(
-            "+" to R.id.btnSomar,
-            "-" to R.id.btnSubtrair,
-            "×" to R.id.btnMultiplicar,
-            "÷" to R.id.btnDividir
+            "+" to R.id.btnAdd,
+            "-" to R.id.btnSubtract,
+            "×" to R.id.btnMultiply,
+            "÷" to R.id.btnDivide
         )
         ops.forEach { (op, id) ->
             findViewById<Button>(id).setOnClickListener { onOperator(op) }
         }
 
         // Botão igual
-        findViewById<Button>(R.id.btnIgual).setOnClickListener { onEquals() }
+        findViewById<Button>(R.id.btnEquals).setOnClickListener { onEquals() }
 
         // Botão limpar tudo
         findViewById<Button>(R.id.btnClear).setOnClickListener { clearAll() }

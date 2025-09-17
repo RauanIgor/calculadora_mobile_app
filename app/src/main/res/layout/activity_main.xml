@@ -2,119 +2,133 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="?attr/colorSurface"
+    tools:context=".MainActivity">
 
-    <!-- Display da calculadora -->
-    <TextView
-        android:id="@+id/txtResultado"
-        android:layout_width="0dp"
+    <ImageButton
+        android:id="@+id/btn_toggle_theme"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="0"
-        android:textSize="32sp"
-        android:textColor="@android:color/black"
-        android:background="@android:color/darker_gray"
+        android:src="@drawable/ic_theme_toggle"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:padding="16dp"
+        app:tint="?attr/colorOnSurfaceVariant"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/desc_mudar_tema" />
 
-    <!-- Grade de botões -->
-    <GridLayout
-        android:id="@+id/gridButtons"
+    <LinearLayout
+        android:id="@+id/display_area"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:rowCount="5"
-        android:columnCount="4"
-        android:alignmentMode="alignMargins"
-        android:useDefaultMargins="true"
-        app:layout_constraintTop_toBottomOf="@id/txtResultado"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:gravity="bottom|end"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_toggle_theme"
+        app:layout_constraintBottom_toTopOf="@id/btn_tip_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/text_expression"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="24sp"
+            tools:text="3142 + 623 + 1081 + 500" />
+
+        <TextView
+            android:id="@+id/text_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="56sp"
+            android:textStyle="bold"
+            tools:text="5,346" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_tip_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/display_area"
+        app:layout_constraintBottom_toTopOf="@id/buttons_panel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Linha 1 -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnClear"
-            style="@style/Widget.Material3.Button"
-            android:text="C" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBackspace"
-            style="@style/Widget.Material3.Button"
-            android:text="⌫" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDividir"
-            style="@style/Widget.Material3.Button"
-            android:text="÷" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMultiplicar"
-            style="@style/Widget.Material3.Button"
-            android:text="×" />
+            android:id="@+id/btn_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="$ Gorjeta"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:contentDescription="@string/desc_gorjeta"
+            app:cornerRadius="12dp"
+            app:backgroundTint="?attr/colorPrimaryContainer"
+            android:textColor="?attr/colorOnPrimaryContainer"/>
 
-        <!-- Linha 2 -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn7"
-            style="@style/Widget.Material3.Button"
-            android:text="7" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn8"
-            style="@style/Widget.Material3.Button"
-            android:text="8" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn9"
-            style="@style/Widget.Material3.Button"
-            android:text="9" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSubtrair"
-            style="@style/Widget.Material3.Button"
-            android:text="-" />
+    </LinearLayout>
 
-        <!-- Linha 3 -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn4"
-            style="@style/Widget.Material3.Button"
-            android:text="4" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn5"
-            style="@style/Widget.Material3.Button"
-            android:text="5" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn6"
-            style="@style/Widget.Material3.Button"
-            android:text="6" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSomar"
-            style="@style/Widget.Material3.Button"
-            android:text="+" />
 
-        <!-- Linha 4 -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn1"
-            style="@style/Widget.Material3.Button"
-            android:text="1" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn2"
-            style="@style/Widget.Material3.Button"
-            android:text="2" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn3"
-            style="@style/Widget.Material3.Button"
-            android:text="3" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnIgual"
-            style="@style/Widget.Material3.Button"
-            android:text="=" />
 
-        <!-- Linha 5 -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn0"
-            style="@style/Widget.Material3.Button"
-            android:text="0" />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPonto"
-            style="@style/Widget.Material3.Button"
-            android:text="." />
-    </GridLayout>
+    <LinearLayout
+        android:id="@+id/buttons_panel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_tip_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_weight="2">
+
+        <LinearLayout style="@style/CalculatorRow">
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Special" android:id="@+id/btnClear" android:text="C" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Special" android:id="@+id/btnPlusMinus" android:text="+/-" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Special" android:id="@+id/btnPercent" android:text="%" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Operator" android:id="@+id/btnDivide" android:text="÷" />
+        </LinearLayout>
+        <LinearLayout style="@style/CalculatorRow">
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn7" android:text="7" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn8" android:text="8" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn9" android:text="9" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Operator" android:id="@+id/btnMultiply" android:text="×" />
+        </LinearLayout>
+        <LinearLayout style="@style/CalculatorRow">
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn4" android:text="4" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn5" android:text="5" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn6" android:text="6" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Operator" android:id="@+id/btnSubtract" android:text="-" />
+        </LinearLayout>
+        <LinearLayout style="@style/CalculatorRow">
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn1" android:text="1" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn2" android:text="2" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn3" android:text="3" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Operator" android:id="@+id/btnAdd" android:text="+" />
+        </LinearLayout>
+        <LinearLayout style="@style/CalculatorRow">
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btnDot" android:text="." />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btn0" android:text="0" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Number" android:id="@+id/btnBackspace" android:text="⌫" />
+            <com.google.android.material.button.MaterialButton style="@style/CalculatorButton.Operator" android:id="@+id/btnEquals" android:text="=" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
