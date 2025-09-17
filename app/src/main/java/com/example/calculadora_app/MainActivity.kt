@@ -1,12 +1,16 @@
 package com.example.calculadora_app
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
@@ -22,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Inicializa o botão de gorjeta
         val btnTip = findViewById<MaterialButton>(R.id.btn_tip)
         btnTip.setOnClickListener {
             val intent = Intent(this, TipActivity::class.java)
@@ -50,6 +53,8 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(id).setOnClickListener { appendDigit(digit) }
         }
 
+        val btnToggleTheme = findViewById<ImageButton>(R.id.btn_toggle_theme)
+
         // Botões de operações
         val ops = listOf(
             "+" to R.id.btnAdd,
@@ -57,8 +62,27 @@ class MainActivity : AppCompatActivity() {
             "×" to R.id.btnMultiply,
             "÷" to R.id.btnDivide
         )
+
+
         ops.forEach { (op, id) ->
             findViewById<Button>(id).setOnClickListener { onOperator(op) }
+        }
+
+        btnToggleTheme.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+
+            val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+            if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor.putInt("night_mode", AppCompatDelegate.MODE_NIGHT_NO)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                editor.putInt("night_mode", AppCompatDelegate.MODE_NIGHT_YES)
+            }
+
+            editor.apply()
         }
 
         // Botão igual
