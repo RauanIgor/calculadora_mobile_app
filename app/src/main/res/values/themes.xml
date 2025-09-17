@@ -1,9 +1,54 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Calculadora_app" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.CalculadoraApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorSurface">@color/light_background</item>
+        <item name="colorOnSurface">@color/light_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/light_text_secondary</item>
+
+        <item name="colorPrimaryContainer">@color/light_button_operator_bg</item>
+        <item name="colorOnPrimaryContainer">@color/light_button_operator_text</item>
+        <item name="colorSecondaryContainer">@color/light_button_number_bg</item>
+        <item name="colorOnSecondaryContainer">@color/light_text_primary</item>
+        <item name="colorTertiaryContainer">@color/light_button_special_bg</item>
+        <item name="colorOnTertiaryContainer">@color/light_text_primary</item>
     </style>
 
-    <style name="Theme.Calculadora_app" parent="Base.Theme.Calculadora_app" />
+    <style name="CalculatorRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="CalculatorButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.ButtonSquircle</item>
+    </style>
+
+    <style name="ShapeAppearance.App.ButtonSquircle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+
+    <style name="CalculatorButton.Number" parent="CalculatorButton">
+        <item name="backgroundTint">?attr/colorSecondaryContainer</item>
+        <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+    </style>
+
+    <style name="CalculatorButton.Operator" parent="CalculatorButton">
+        <item name="backgroundTint">?attr/colorPrimaryContainer</item>
+        <item name="android:textColor">?attr/colorOnPrimaryContainer</item>
+    </style>
+
+    <style name="CalculatorButton.Special" parent="CalculatorButton">
+        <item name="backgroundTint">?attr/colorTertiaryContainer</item>
+        <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
+    </style>
+
 </resources>
