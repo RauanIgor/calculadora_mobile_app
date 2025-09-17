@@ -87,8 +87,7 @@
                 android:elevation="2dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="4dp"
-                android:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent">
+                android:padding="4dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_decrease_tip"
@@ -215,8 +214,7 @@
                 android:elevation="2dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="4dp"
-                android:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.SmallComponent">
+                android:padding="4dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_decrease_people"
