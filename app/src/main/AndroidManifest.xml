@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CalculadoraApp">
+        <activity android:name=".TipActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

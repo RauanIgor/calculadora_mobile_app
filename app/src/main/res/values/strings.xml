@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">calculadora_app</string>
     <string name="desc_mudar_tema">Mudar Tema</string>
+    <string name="desc_gorjeta">Abrir calculadora de gorjeta</string>
 </resources>
