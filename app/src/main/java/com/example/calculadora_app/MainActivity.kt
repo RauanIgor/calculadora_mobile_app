@@ -60,7 +60,8 @@ class MainActivity : AppCompatActivity() {
             "+" to R.id.btnAdd,
             "-" to R.id.btnSubtract,
             "×" to R.id.btnMultiply,
-            "÷" to R.id.btnDivide
+            "÷" to R.id.btnDivide,
+            "%" to R.id.btnPercent
         )
 
 
@@ -93,6 +94,7 @@ class MainActivity : AppCompatActivity() {
 
         // Botão backspace
         findViewById<Button>(R.id.btnBackspace).setOnClickListener { backspace() }
+
 
         updateDisplay()
     }
@@ -132,6 +134,7 @@ class MainActivity : AppCompatActivity() {
             "+" -> a + b
             "-" -> a - b
             "×" -> a * b
+            "%" -> (a / 100.0) * b
             "÷" -> if (b == 0.0) {
                 Toast.makeText(this, "Divisão por zero", Toast.LENGTH_SHORT).show()
                 a
@@ -157,6 +160,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateDisplay() {
         tvDisplay.text = if (currentInput.isNotEmpty()) currentInput else (operand?.toString() ?: "0")
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
