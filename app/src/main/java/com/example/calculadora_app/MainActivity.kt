@@ -92,7 +92,6 @@ class MainActivity : AppCompatActivity() {
         // Botão backspace
         findViewById<Button>(R.id.btnBackspace).setOnClickListener { backspace() }
 
-
         updateDisplay()
     }
 
